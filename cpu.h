@@ -9,7 +9,7 @@ typedef struct {
     uint64_t sp;  // Registrador Stack Pointer
 } CPU;
 
-typedef struct { // struct da estrutura das instruções
+typedef struct { // struct da instrução
     uint8_t opcode;
     uint8_t type;
     uint8_t rd;
@@ -19,6 +19,7 @@ typedef struct { // struct da estrutura das instruções
 } instruction;
 
 uint64_t reg_read(CPU *cpu, int reg);  // Leitura
+
 void reg_write(CPU *cpu, int reg, uint64_t value);  //  Escrita
 
 #endif

@@ -11,7 +11,7 @@ uint64_t mem_read(uint64_t address) {
     }
 
     for (int i = 0; i <= 7; i++) {  
-        result |= (uint64_t)memory[address + i] << (i * 8); // cast para 64 bits antes do shift para não estourar o dado
+        result |= (uint64_t)memory[address + i] << (i * 8); // Cast para 64 bits antes do shift para não estourar o uint*_t
     }
     return result;
 }
