@@ -1,8 +1,9 @@
 #ifndef DECODE_H
 #define DECODE_H
+
 #include "../cpu/cpu.h"
 
-instruction decode(uint32_t data); //função que retorna a instrução decodificada
+instruction decode(uint32_t data);  // Função que retorna a instrução decodificada
 
 instruction buildDPR(uint32_t data);
 instruction buildDPI(uint32_t data);

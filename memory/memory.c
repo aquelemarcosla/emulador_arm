@@ -1,18 +1,18 @@
 #include "memory.h"
-#include <stdint.h>
 
-uint8_t memory[MEM_SIZE]; // memoria declarada
+uint8_t memory[MEM_SIZE];  // Memória declarada
 
 uint64_t mem_read(uint64_t address) {
     uint64_t result = 0;
 
-    if (address + 7 >= MEM_SIZE) { // verifica se o endereço acessado mais alinhamento não ultrapassa o limite
+    if (address + 7 >= MEM_SIZE) {  // Verifica se o acesso de 8 bytes está no limite
         // limite
     }
 
-    for (int i = 0; i <= 7; i++) {  
-        result |= (uint64_t)memory[address + i] << (i * 8); // Cast para 64 bits antes do shift para não estourar o uint*_t
+    for (int i = 0; i < 8; i++) {
+        result |= (uint64_t)memory[address + i] << (i * 8);
     }
+
     return result;
 }
 
@@ -21,7 +21,7 @@ void mem_write(uint64_t address, uint64_t data) {
         // limite
     }
 
-    for (int i = 0; i <= 7; i++) {
-        memory[address + i] = data >> (i * 8);
+    for (int i = 0; i < 8; i++) {
+        memory[address + i] = (uint8_t)(data >> (i * 8));
     }
 }
