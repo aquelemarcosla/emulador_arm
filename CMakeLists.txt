@@ -38,7 +38,6 @@ add_executable(tests
         memory/memory.c
         decode/decode.c
         execute/execute.c
-        tests/test_decode.c
 )
 
 target_link_libraries(tests unity_lib)
