@@ -8,6 +8,7 @@
 
 /* Classifica o major group e delega para o decodificador correspondente. */
 instruction decode(uint32_t data) {
+    instruction inst;
 
     /* Isola os bits [28:25] para identificar o major group. */
     uint8_t op1 = GET_BITS(data, 25, 0xF);
@@ -21,6 +22,8 @@ instruction decode(uint32_t data) {
     } else if ((op1 & 0x5) == 0x4) {  /* op1 == x1x0: Memory Access */
         return buildM(data);
     }
+
+    return inst;
 }
 
 /* Decodifica instruções do grupo Data Processing - Immediate. */
