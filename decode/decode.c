@@ -26,21 +26,31 @@ instruction decode(uint32_t data) {
 /* Decodifica instruções do grupo Data Processing - Immediate. */
 instruction buildDPI(uint32_t data) {
 
-    /* Mascára para subgrupo [28:23] */
-    uint8_t op2 = GET_BITS(data, 23, 0x3F);
+    /* Mascára para subgrupo DPI [28:23]. */
+    uint8_t opSubGp = GET_BITS(data, 23, 0x3F);
 
-    /* Mascára para opocde [30:29] do grupo aritmético. */
-    uint8_t op3 = GET_BITS(data, 29, 0x3);
+    /* Mascára para opocde [30:29]. */
+    uint8_t opcode = GET_BITS(data, 29, 0x3);
 
-    /* Subgrupo ADDI / SUBI / CMP. */
-    if ((op2 & 0x22) == 0x22) {
-        switch (op3) {
+    /* Subgrupo aritmético. */
+    if ((opSubGp & 0x22) == 0x22) {
+        switch (opcode) {
             case 0x0:  /* ADDI [00] */
                 return buildADDI(data);
             case 0x1:  /* SUBI [01] */
                 return buildSUBI(data);
-            case 0x3:  /* CMP [11] */
+            case 0x2:  /* CMP [10] */
                 return buildCMP(data);
+        }
+    /* Subgrupo lógico. */
+    } else if ((opSubGp & 0x25) == 0x25) {
+        switch (opcode) {
+            case 0x0:  /* ANDI [00] */
+                return buildANDI(data);
+            case 0x1:  /* ORRI [01] */
+                return buildORRI(data);
+            case 0x2:  /* EORI [10] */
+                return buildEORI(data);
         }
     }
 
