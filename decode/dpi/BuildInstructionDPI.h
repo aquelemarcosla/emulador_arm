@@ -17,4 +17,7 @@ instruction buildEORI(uint32_t data) {}
 instruction buildMOVZ(uint32_t data) {}
 instruction buildMOVN(uint32_t data) {}
 
+/* Deslocamento */
+instruction buildUBFM(uint32_t data) {}
+
 #endif //EMULADOR_ARM_BUILDINSTRUCTIONDPI_H
