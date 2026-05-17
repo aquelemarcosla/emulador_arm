@@ -71,10 +71,8 @@ instruction buildDPI(uint32_t data) {
         }
     /* Subgrupo deslocamento [100110] */
     } else if ((opSubGp & 0x26) == 0x26) {
-        switch (opcode) {
-            case 0x0:  /* UBFM */
-                return buildUBFM(data);
-        }
+        /* UBFM */
+        return buildUBFM(data);
     }
 
     return inst;
