@@ -8,6 +8,8 @@
 
 /* Classifica o major group e delega para o decodificador correspondente. */
 instruction decode(uint32_t data) {
+
+    /* Caso indefinido */
     instruction inst = {0};
 
     /* Isola os bits [28:25] para identificar o major group. */
@@ -28,6 +30,9 @@ instruction decode(uint32_t data) {
 
 /* Decodifica instruções do grupo Data Processing - Immediate. */
 instruction buildDPI(uint32_t data) {
+
+    /* Caso indefinido */
+    instruction inst = {0};
 
     /* Mascára para subgrupo DPI [28:23]. */
     uint8_t opSubGp = GET_BITS(data, 23, 0x3F);
@@ -71,12 +76,22 @@ instruction buildDPI(uint32_t data) {
         }
     }
 
-
+    return inst;
 }
 
 /* Decodifica instruções do grupo Data Processing - Register. */
 instruction buildDPR(uint32_t data) {
 
+    /* Caso indefinido */
+    instruction inst = {0};
+
+    /* Máscara subgrupo [28:24] Aritmética e Lógica. */
+    uint8_t opSubGp = GET_BITS(data, 24, 0x1F);
+
+    /* Máscara subgrupo[24:21] Deslocamento. */
+    uint8_t opSubGp2 = GET_BITS(data, 25, 0x3);
+
+    return inst;
 }
 
 /* Decodifica instruções do grupo Branches. */
