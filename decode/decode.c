@@ -181,7 +181,7 @@ instruction buildB(uint32_t data) {
     if ((opSubGp & 0x5) == 0x5) {
         switch (opcode) {
             case 0x0:
-                return buildB(data);
+                return buildBranch(data);
             case 0x1:
                 return buildBL(data);
             default:

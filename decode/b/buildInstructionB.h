@@ -4,7 +4,7 @@
 #include "stdint.h"
 
 /* Branches (Desvios) */
-instruction buildB(uint32_t data);
+instruction buildBranch(uint32_t data);
 instruction buildBL(uint32_t data);
 
 #endif //EMULADOR_ARM_BUILDINSTRUCTIONB_H
