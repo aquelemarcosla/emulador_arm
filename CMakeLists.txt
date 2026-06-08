@@ -32,6 +32,7 @@ add_executable(emulador_arm
         execute/execute.c
         encode/encode.c
         encode/opcode_table/opcode_table.c
+        # header files are included from sources when needed; remove missing headers
 )
 
 # Executável de teste
