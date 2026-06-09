@@ -1,10 +1,7 @@
 #include "../cpu/cpu.h"
 #include "decode.h"
 #include <stdint.h>
-#include "dpi/buildInstructionDPI.h"
-#include "dpr/buildInstructionDPR.h"
-#include "m/buildInstructionM.h"
-#include "b/buildInstructionB.h"
+#include "buildersDecode.h"
 
 /* Extrai bits de data aplicando deslocamento e máscara. */
 #define GET_BITS(data, shift, mask) (((data) >> (shift)) & (mask))
@@ -104,7 +101,7 @@ instruction buildDPR(uint32_t data) {
     /* Máscara opcode Lógica [30:29] */
     uint8_t opLog = GET_BITS(data, 29, 0x3);
 
-    /* Máscara opcode Deslocamento */
+    /* Máscara opcode Deslocamento [15:10] */
     uint8_t opDes = GET_BITS(data, 10, 0x3F);
 
     /* Subgrupo Aritmético [01011] */
@@ -175,17 +172,44 @@ instruction buildB(uint32_t data) {
     /* Máscara subgrupo [30:26] */
     uint8_t opSubGp = GET_BITS(data, 26, 0x1F);
 
+    /* Máscara subgrupo 2 [31:24] */
+    uint8_t opSubGp2 = GET_BITS(data, 24, 0xFF);
+
+    // Máscara subgrupo 3 [31:25]
+    uint8_t opSubGp3 = GET_BITS(data, 25, 0x7F);
+
     /* Máscara opcode [31] */
     uint8_t opcode = GET_BITS(data, 31, 0x1);
 
+    // Máscara opcode 2 [3:0]
+    uint8_t opcode2 = GET_BITS(data, 0, 0xF);
+
+    // Máscara opcode 3 [24:10]
+    uint16_t opcode3 = GET_BITS(data, 10, 0x7FFF);
+
     if ((opSubGp & 0x5) == 0x5) {
         switch (opcode) {
-            case 0x0:
+            case 0x0: // BRANCH [0]
                 return buildBranch(data);
-            case 0x1:
+            case 0x1: // BL [1]
                 return buildBL(data);
             default:
                 return inst;
+        }
+        // BEQ e BNE
+    } else if ((opSubGp2 & 0x54) == 0x54) { 
+        switch (opcode2) {
+            case 0x0: // BEQ [0000]
+                return buildBEQ(data);
+            case 0x1: // BNE [0001]
+                return buildBNE(data);
+            default:
+                return inst;
+        }
+        // RET
+    } else if ((opSubGp3 & 0x6B) == 0x6B) {
+        if (opcode3 == 0x2F80) { // RET [101111111000000]
+            return buildRET(data);
         }
     }
 
