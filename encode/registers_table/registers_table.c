@@ -33,7 +33,8 @@ RegistersTable registers_table[] = {
     {"X27", 0x1B},
     {"X28", 0x1C},
     {"X29", 0x1D},
-    {"X30", 0x1E}
+    {"X30", 0x1E},
+    {"X31",  0x1F},
 };
 
 const int registers_table_size = sizeof(registers_table) / sizeof(RegistersTable);
