@@ -1,6 +1,7 @@
 #include "stdint.h"
 #include "encode.h"
 #include "opcode_table/opcode_table.h"
+#include "string.h"
 
 uint32_t encode(const char *instruction) {
     if (instruction == NULL){
@@ -12,7 +13,7 @@ uint32_t encode(const char *instruction) {
     uint32_t instruction_decode = 0;   
 
     char *saveptr;
-    const char *delimitadores = " ,";
+    const char *delimitadores = " ,\t\r\n";
 
     char buffer[65];
 

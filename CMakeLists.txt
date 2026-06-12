@@ -37,6 +37,7 @@ add_executable(emulador_arm
         decode/buildersDecode/buildersDecode.h
         reader/reader.h
         cpu/labels_table/labels_table.h
+        cpu/program_table/program_table.h
 )
 
 # Executável de teste

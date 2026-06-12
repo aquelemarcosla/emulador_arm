@@ -24,5 +24,5 @@ uint64_t getLabelAddress(const char *name) {
             return labels_table[i].address;
         }
     }
-    return 0;
+    return -1;
 }

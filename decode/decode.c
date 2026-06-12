@@ -208,7 +208,7 @@ instruction buildB(uint32_t data) {
         }
         // RET
     } else if ((opSubGp3 & 0x6B) == 0x6B) {
-        if (opcode3 == 0x2F80) { // RET [101111111000000]
+        if (opcode3 == 0x2F80) { // RET [010111110000000]
             return buildRET(data);
         }
     }

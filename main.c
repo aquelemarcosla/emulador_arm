@@ -4,5 +4,8 @@
 int main(void) {
     // Init CPU.
     CPU cpu = {0};
+    reg_write(&cpu, 33, 0x1FFFF);  // Definindo SP.
 
+    
+    
 }
