@@ -1,5 +1,5 @@
-#ifndef BUILDINSTRUCTIONB_H
-#define BUILDINSTRUCTIONB_H
+#include "buildInstructionB.h"
+#include "stdint.h"
 #include "cpu.h"
 #include "stdint.h"
 
@@ -13,5 +13,3 @@ instruction buildBNE(uint32_t data);
 
 // Desvio incondicional
 instruction buildRET(uint32_t data);
-
-#endif //BUILDINSTRUCTIONB_H

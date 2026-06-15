@@ -1,7 +1,7 @@
 #ifndef BUILDINSTRUCTIONM_H
 #define BUILDINSTRUCTIONM_H
 #include <stdint.h>
-#include "../../../cpu/cpu.h"
+#include "cpu.h"
 
 /* Acesso a memória */
 instruction buildLDR(uint32_t data);

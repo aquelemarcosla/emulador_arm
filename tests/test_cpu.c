@@ -1,6 +1,18 @@
 #include <string.h>
 #include "unity.h"
 #include "../cpu/cpu.h"
+#include "../encode/encode.h"
+#include "../cpu/labels_table/labels_table.h"
+
+void test_encode_branch(void) {
+    addLabel("label", 123);
+
+    uint32_t result = encode("B label");
+
+    uint32_t expected = (5u << 26) | 123u; // ajuste conforme o opcode real do B
+
+    TEST_ASSERT_EQUAL_HEX32(expected, result);
+}
 
 void test_reg_read_and_write(void) {
     // CPU limpa

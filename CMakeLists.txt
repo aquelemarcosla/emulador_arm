@@ -38,6 +38,8 @@ add_executable(emulador_arm
         reader/reader.h
         cpu/labels_table/labels_table.h
         cpu/program_table/program_table.h
+        cpu/cpu.c
+        cpu/cpu.h
 )
 
 # Executável de teste
@@ -47,6 +49,7 @@ add_executable(tests
         memory/memory.c
         decode/decode.c
         execute/execute.c
+        cpu/labels_table/labels_table.c
 )
 
 target_link_libraries(tests unity_lib)

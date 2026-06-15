@@ -1,5 +1,4 @@
-#ifndef BUILDINSTRUCTIONDPR_H
-#define BUILDINSTRUCTIONDPR_H
+#include "buildInstructionDPR.h"
 #include <stdint.h>
 #include "cpu.h"
 
@@ -15,5 +14,3 @@ instruction buildEOR(uint32_t data);
 /* Deslocamento. */
 instruction buildLSRV(uint32_t data);
 instruction buildLSLV(uint32_t data);
-
-#endif //BUILDINSTRUCTIONDPR_H
