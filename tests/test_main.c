@@ -1,11 +1,24 @@
 #include "unity.h"
 
-// No additional setup needed.
+// Test CPU.
+void test_reg_read_and_write(void);
+void test_nzcv(void);
 
-void setup(void){}
-void teardown(void){}
+// Test encode Branch
+void test_encode_BNE(void);
+void test_encode_BEQ(void);
+void test_encode_Branch(void);
+
+// Test encode DPI_A
+void test_encode_ADDI(void);
+void test_encode_SUBI(void);
+void test_encode_CMPI(void);
+
+void setUp(void){}
+void tearDown(void){}
 
 int main(void) {
     UNITY_BEGIN();
+    RUN_TEST(test_encode_CMPI);
     UNITY_END();
 }

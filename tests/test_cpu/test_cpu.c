@@ -1,6 +1,6 @@
 #include <string.h>
 #include "unity.h"
-#include "../cpu/cpu.h"
+#include "../../cpu/cpu.h"
 
 void test_reg_read_and_write(void) {
     // Clean CPU
