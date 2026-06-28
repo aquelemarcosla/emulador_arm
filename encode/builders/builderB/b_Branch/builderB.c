@@ -29,12 +29,22 @@ uint32_t builderB(uint32_t value, char **saveptr) {
 
 // "BL label(imm26)"
 uint32_t builderBL(uint32_t value, char **saveptr) {
-    uint32_t instructionExit = MOVE_BITS(value, 0x3F, 26);
+    int64_t currentPC = getLastPC();
+    int64_t targetLabel;
+    int64_t targetOffset;
+    uint32_t instructionExit = 0;
 
+    // Get the label.
     char *token = strtok_r(NULL, " \t\r\n", saveptr);
     if (token == NULL) return 0;
 
-    instructionExit |= MOVE_BITS(getLabelAddress(token), 0x3FFFFFF, 0);
+    // Calculate relative PC.
+    targetLabel = getLabelAddress(token);
+    targetOffset = (targetLabel - currentPC) / 4;
+
+    instructionExit |= MOVE_BITS(value, 0x3F, 26);
+    instructionExit |= MOVE_BITS(targetOffset, 0x3FFFFFF, 0);
+
     return instructionExit;
 }
 
@@ -47,31 +57,54 @@ uint32_t builderRET(uint32_t value, char **saveptr) {
 
 // "BEQ label(imm19)"
 uint32_t builderBEQ(uint32_t value, char **saveptr) {
-    uint32_t instructionExit = MOVE_BITS(value, 0xFF, 24);
-    uint64_t imm19;
+    int64_t currentPC = getLastPC();
+    int64_t targetLabel;
+    int64_t targetOffset;
+    uint32_t instructionExit = 0;
 
-    char *token = strtok_r(NULL, " ,\t\r\n", saveptr);
+    // Get the label.
+    char *token = strtok_r(NULL, " \t\r\n", saveptr);
     if (token == NULL) return 0;
 
-    imm19 = MOVE_BITS(getLabelAddress(token), 0x7FFFF, 5);
-    instructionExit |= imm19;
+    // Calculate relative PC.
+    targetLabel = getLabelAddress(token);
+    targetOffset = (targetLabel - currentPC) / 4;
+
+    instructionExit |= MOVE_BITS(value, 0xFF, 24);
+    instructionExit |= MOVE_BITS(targetOffset, 0x7FFFF, 5);
+
+    // suffix
+    instructionExit |= MOVE_BITS(0x0, 0x1, 4);
+
+    // cond
+    instructionExit |= MOVE_BITS(0x0, 0xF, 0);
 
     return instructionExit;
 }
 
 // "BNE label(imm19)"
 uint32_t builderBNE(uint32_t value, char **saveptr) {
-    uint32_t instructionExit = MOVE_BITS(value, 0xFF, 24);
-    uint64_t imm19;
-    uint8_t cond;
+    int64_t currentPC = getLastPC();
+    int64_t targetLabel;
+    int64_t targetOffset;
+    uint32_t instructionExit = 0;
 
-    char *token = strtok_r(NULL, " ,\t\r\n", saveptr);
+    // Get the label.
+    char *token = strtok_r(NULL, " \t\r\n", saveptr);
     if (token == NULL) return 0;
 
-    imm19 = MOVE_BITS(getLabelAddress(token), 0x7FFFF, 5);
-    cond = 1;
-    instructionExit |= imm19;
-    instructionExit |= MOVE_BITS(cond, 0xF, 0);
+    // Calculate relative PC.
+    targetLabel = getLabelAddress(token);
+    targetOffset = (targetLabel - currentPC) / 4;
+
+    instructionExit |= MOVE_BITS(value, 0xFF, 24);
+    instructionExit |= MOVE_BITS(targetOffset, 0x7FFFF, 5);
+
+    // suffix
+    instructionExit |= MOVE_BITS(0x0, 0x1, 4);
+
+    // cond
+    instructionExit |= MOVE_BITS(0x1, 0x1, 0);
 
     return instructionExit;
 }
