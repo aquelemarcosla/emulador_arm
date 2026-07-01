@@ -5,7 +5,7 @@
 
 #define MOVE_BITS(data, mask, shift) (((uint32_t)(data) & (mask)) << (shift))
 
-// ADDI Xd, Xn, #imm
+// ADDI Rd, Rn, #imm
 uint32_t builderADDI(uint32_t value, char **saveptr) {
     uint8_t rn;
     uint8_t rd;
@@ -24,7 +24,7 @@ uint32_t builderADDI(uint32_t value, char **saveptr) {
     return instructionExit;
 }
 
-// SUBI X0, X1, #5
+// SUBI Rd, Rn, #imm
 uint32_t builderSUBI(uint32_t value, char **saveptr) {
     uint8_t rn;
     uint8_t rd;
@@ -44,7 +44,7 @@ uint32_t builderSUBI(uint32_t value, char **saveptr) {
     return instructionExit;
 }
 
-// (CMP X1, #1) -> SUBS ZXR, X1, #1
+// (CMP Rn, #imm) -> SUBS XZR, Rn, #imm
 uint32_t builderCMPI(uint32_t value, char **saveptr) {
     uint8_t rn;
     uint8_t rd = 0x1F;

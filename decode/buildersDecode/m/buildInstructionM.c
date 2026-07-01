@@ -3,11 +3,11 @@
 #include "cpu/cpu.h"
 
 /* Memory access */
-instruction buildLDR(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildLDR(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
-instruction buildSTR(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildSTR(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }

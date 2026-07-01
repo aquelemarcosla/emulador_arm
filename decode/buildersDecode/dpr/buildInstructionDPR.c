@@ -3,35 +3,35 @@
 #include "cpu/cpu.h"
 
 /* Arithmetic. */
-instruction buildADD(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildADD(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
-instruction buildSUB(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildSUB(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
 
 /* Logic. */
-instruction buildAND(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildAND(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
-instruction buildORR(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildORR(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
-instruction buildEOR(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildEOR(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
 
 /* Shift. */
-instruction buildLSRV(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildLSRV(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
-instruction buildLSLV(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildLSLV(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }

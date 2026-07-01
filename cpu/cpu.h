@@ -17,7 +17,7 @@ typedef struct {  // instruction struct
     uint8_t rn;    // R1
     uint8_t rm;    // R2
     int64_t imm;   // Signed immediates for possible negative values
-} instruction;
+} Instruction;
 
 uint8_t get_nzcv(CPU *cpu);
 

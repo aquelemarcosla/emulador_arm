@@ -4,7 +4,7 @@
 
 #define MOV_BITS(data, mask, shift) (((uint32_t)(data) & (mask)) << (shift))
 
-// LSL X0, X1, #4
+// LSL Rd, Rn, #imm
 uint32_t builderLSL(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint8_t immr;
@@ -29,7 +29,7 @@ uint32_t builderLSL(uint32_t value, char **saveptr) {
     return instructionExit;
 }
 
-// LSR X0, X1, #4
+// LSR Rd, Rn, #imm
 uint32_t builderLSR(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint8_t immr;

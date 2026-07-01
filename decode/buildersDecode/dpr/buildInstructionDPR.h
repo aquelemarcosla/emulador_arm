@@ -4,16 +4,16 @@
 #include "cpu/cpu.h"
 
 /* Arithmetic. */
-instruction buildADD(uint32_t data);
-instruction buildSUB(uint32_t data);
+Instruction buildADD(uint32_t data);
+Instruction buildSUB(uint32_t data);
 
 /* Logic. */
-instruction buildAND(uint32_t data);
-instruction buildORR(uint32_t data);
-instruction buildEOR(uint32_t data);
+Instruction buildAND(uint32_t data);
+Instruction buildORR(uint32_t data);
+Instruction buildEOR(uint32_t data);
 
 /* Shift. */
-instruction buildLSRV(uint32_t data);
-instruction buildLSLV(uint32_t data);
+Instruction buildLSRV(uint32_t data);
+Instruction buildLSLV(uint32_t data);
 
 #endif //BUILDINSTRUCTIONDPR_H

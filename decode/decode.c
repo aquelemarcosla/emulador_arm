@@ -7,10 +7,10 @@
 #define GET_BITS(data, shift, mask) (((data) >> (shift)) & (mask))
 
 /* Classifies the major group and delegates to the corresponding decoder. */
-instruction decode(uint32_t data) {
+Instruction decode(uint32_t data) {
 
     /* Undefined case. */
-    instruction inst = {0};
+    Instruction inst = {0};
 
     /* Isolates bits [28:25] to identify the major group. */
     uint8_t op1 = GET_BITS(data, 25, 0xF);
@@ -29,10 +29,10 @@ instruction decode(uint32_t data) {
 }
 
 /* Decodes instructions from the Data Processing - Immediate group. */
-instruction buildDPI(uint32_t data) {
+Instruction buildDPI(uint32_t data) {
 
     /* Undefined case */
-    instruction inst = {0};
+    Instruction inst = {0};
 
     /* Mask for DPI subgroup [28:23]. */
     uint8_t opSubGp = GET_BITS(data, 23, 0x3F);
@@ -84,10 +84,10 @@ instruction buildDPI(uint32_t data) {
 }
 
 /* Decodes instructions from the Data Processing - Register group. */
-instruction buildDPR(uint32_t data) {
+Instruction buildDPR(uint32_t data) {
 
     /* Undefined case */
-    instruction inst = {0};
+    Instruction inst = {0};
 
     /* Mask subgroup [28:24] Arithmetic and Logic. */
     uint8_t opSubGp = GET_BITS(data, 24, 0x1F);
@@ -141,8 +141,8 @@ instruction buildDPR(uint32_t data) {
 }
 
 /* Decodes instructions from the Memory Access group. */
-instruction buildM(uint32_t data) {
-    instruction inst = {0};
+Instruction buildM(uint32_t data) {
+    Instruction inst = {0};
 
     /* Mask for memory access subgroup [29:24] */
     uint8_t opSubGp = GET_BITS(data, 24, 0x3F);
@@ -165,9 +165,9 @@ instruction buildM(uint32_t data) {
 }
 
 /* Decodes instructions from the Branches group. */
-instruction buildB(uint32_t data) {
+Instruction buildB(uint32_t data) {
 
-    instruction inst = {0};
+    Instruction inst = {0};
 
     /* Mask subgroup [30:26] */
     uint8_t opSubGp = GET_BITS(data, 26, 0x1F);

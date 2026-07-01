@@ -4,7 +4,7 @@
 
 #define MOVE_BITS(data, mask, shift) (((uint32_t)data & mask) << (shift))
 
-// MOVZ X0, #100
+// MOVZ Rd, #imm
 uint32_t builderMOVZ(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint16_t imm;
@@ -20,7 +20,7 @@ uint32_t builderMOVZ(uint32_t value, char **saveptr) {
     return instructionExit;
 }
 
-// MOVN X0, #100
+// MOVN Rd, #imm
 uint32_t builderMOVN(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint16_t imm;

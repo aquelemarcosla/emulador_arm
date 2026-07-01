@@ -4,7 +4,7 @@
 #include "cpu/cpu.h"
 
 /* Memory access */
-instruction buildLDR(uint32_t data);
-instruction buildSTR(uint32_t data);
+Instruction buildLDR(uint32_t data);
+Instruction buildSTR(uint32_t data);
 
 #endif //BUILDINSTRUCTIONM_H

@@ -5,7 +5,7 @@
 
 #define MOVE_BITS(data, mask, shift) (((uint32_t)(data) & (mask)) << (shift))
 
-// ANDI X0, X1, #100
+// ANDI Rd, Rn, #imm
 uint32_t builderANDI(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint16_t imm13;
@@ -24,7 +24,7 @@ uint32_t builderANDI(uint32_t value, char **saveptr) {
     return instructionExit;
 }
 
-// ORRI X0, X1, #100
+// ORRI Rd, Rn, #imm
 uint32_t builderORRI(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint16_t imm13;
@@ -43,7 +43,7 @@ uint32_t builderORRI(uint32_t value, char **saveptr) {
     return instructionExit;
 }
 
-// EORI X0, X1, #100
+// EORI Rd, Rn, #imm
 uint32_t builderEORI(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint16_t imm13;

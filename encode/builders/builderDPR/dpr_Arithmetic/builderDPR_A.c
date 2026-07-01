@@ -1,9 +1,47 @@
 #include "builderDPR_A.h"
 #include "stdint.h"
+#include "encode/builders/builders.h"
 
+#define MOVE_BITS(data, mask, shift) (((uint32_t)(data) & (mask)) << (shift))
+
+// ADD Rd, Rn, Rm
 uint32_t builderADD(uint32_t value, char **saveptr) {
-    return 0;
+    uint32_t instructionExit = 0;
+    uint8_t imm = 0;
+    uint8_t rd;
+    uint8_t rn;
+    uint8_t rm;
+
+    rd = find_register(saveptr);
+    rn = find_register(saveptr);
+    rm = find_register(saveptr);
+
+    instructionExit |= MOVE_BITS(value, 0x7FF, 21);
+    instructionExit |= MOVE_BITS(rm, 0x1F, 16);
+    instructionExit |= MOVE_BITS(imm, 0x1F, 10);
+    instructionExit |= MOVE_BITS(rn, 0x1F, 5);
+    instructionExit |= MOVE_BITS(rd, 0x1F, 0);
+
+    return instructionExit;
 }
+
+// SUB Rd, Rn, Rm
 uint32_t builderSUB(uint32_t value, char **saveptr) {
-    return 0;
+    uint32_t instructionExit = 0;
+    uint8_t imm = 0;
+    uint8_t rd;
+    uint8_t rn;
+    uint8_t rm;
+
+    rd = find_register(saveptr);
+    rn = find_register(saveptr);
+    rm = find_register(saveptr);
+
+    instructionExit |= MOVE_BITS(value, 0x7FF, 21);
+    instructionExit |= MOVE_BITS(rm, 0x1F, 16);
+    instructionExit |= MOVE_BITS(imm, 0x1F, 10);
+    instructionExit |= MOVE_BITS(rn, 0x1F, 5);
+    instructionExit |= MOVE_BITS(rd, 0x1F, 0);
+
+    return instructionExit;
 }

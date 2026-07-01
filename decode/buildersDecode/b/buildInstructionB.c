@@ -4,27 +4,27 @@
 #include "stdint.h"
 
 /* Branches (Jumps) */
-instruction buildBranch(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildBranch(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
-instruction buildBL(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildBL(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
 
 // Conditional branches
-instruction buildBEQ(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildBEQ(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
-instruction buildBNE(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildBNE(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }
 
 // Unconditional branch
-instruction buildRET(uint32_t data) {
-    instruction instruction = {0};
+Instruction buildRET(uint32_t data) {
+    Instruction instruction = {0};
     return instruction;
 }

@@ -6,7 +6,7 @@
 #include "encode/builders/builders.h"
 #define MOVE_BITS(data, mask, shift) (((uint32_t)(data) & (mask)) << (shift))
 
-// LSRV X0, X1, X2
+// LSRV Rd, Rn, Rm
 uint32_t builderLSRV(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint8_t rm;
@@ -27,7 +27,7 @@ uint32_t builderLSRV(uint32_t value, char **saveptr) {
     return instructionExit;
 }
 
-// LSLV X0, X1, X2
+// LSLV Rd, Rn, Rm
 uint32_t builderLSLV(uint32_t value, char **saveptr) {
     uint32_t instructionExit = 0;
     uint8_t rm;
