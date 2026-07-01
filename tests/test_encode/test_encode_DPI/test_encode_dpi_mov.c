@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "unity.h"
-#include "../../cpu/cpu.h"
-#include "../../encode/encode.h"
+#include "../../../cpu/cpu.h"
+#include "../../../encode/encode.h"
 
 static void print_binary32(uint32_t value) {
     for (int i = 31; i >= 0; i--) {

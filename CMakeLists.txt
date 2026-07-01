@@ -54,7 +54,8 @@ add_executable(emulador_arm
         encode/builders/builders.c
         cpu/program_table/program_table.c
         reader/reader.c
-        tests/test_encode/test_encode_dpi_shift.c
+        tests/test_encode/test_encode_DPI/test_encode_dpi_shift.c
+        tests/test_encode/test_encode_DPR/test_encode_dpr_shift.c
 )
 
 target_include_directories(emulador_arm PRIVATE
@@ -90,14 +91,15 @@ add_executable(tests
         encode/builders/builderDPR/dpr_Arithmetic/builderDPR_A.c
         encode/builders/builderDPR/dpr_Logic/builderDPR_L.c
         encode/builders/builderM/m_Access/builderM.c
-        tests/test_encode/test_encode_dpi_a.c
+        tests/test_encode/test_encode_DPI/test_encode_dpi_a.c
         tests/test_main.c
-        tests/test_encode/test_encode_b.c
-        tests/test_encode/test_encode_dpi_l.c
+        tests/test_encode/test_encode_DPI/test_encode_b.c
+        tests/test_encode/test_encode_DPI/test_encode_dpi_l.c
         encode/builders/builders.c
-        "tests/test_encode/test_encode_dpi_mov.c"
+        "tests/test_encode/test_encode_DPI/test_encode_dpi_mov.c"
         reader/reader.c
-        tests/test_encode/test_encode_dpi_shift.c
+        tests/test_encode/test_encode_DPI/test_encode_dpi_shift.c
+        tests/test_encode/test_encode_DPR/test_encode_dpr_shift.c
 )
 
 target_include_directories(tests PRIVATE

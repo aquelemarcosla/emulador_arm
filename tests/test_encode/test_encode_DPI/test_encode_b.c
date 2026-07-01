@@ -1,8 +1,8 @@
 #include <string.h>
 #include "unity.h"
-#include "../../cpu/cpu.h"
-#include "../../encode/encode.h"
-#include "../../cpu/labels_table/labels_table.h"
+#include "../../../cpu/cpu.h"
+#include "../../../encode/encode.h"
+#include "../../../cpu/labels_table/labels_table.h"
 #include "cpu/program_table/program_table.h"
 
 static void print_binary32(uint32_t value) {
